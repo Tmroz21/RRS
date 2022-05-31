@@ -26,7 +26,6 @@ private slots:
 
     void on_spinBox_Seats_valueChanged(int arg1);
 
-    void on_listView_TrainList_activated(const QModelIndex &index);
 
 private:
     Ui::MainWindow *ui;
