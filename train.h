@@ -19,6 +19,13 @@ public:
     QString ShowTrainInfo(){
         return "Code: "+ fCode+" From: "+fFrom+" To "+fTo;
     }
+    QString GetCode(void) const  {return fCode;}
+
 };
+
+bool operator== (const Train& lhs,const Train& rhs)
+{
+    return lhs.GetCode() == rhs.GetCode();
+}
 
 #endif // TRAIN_H

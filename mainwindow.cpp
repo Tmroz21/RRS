@@ -26,11 +26,20 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_Add_clicked()
 {
-    trainList.push_back(Train(from,to,code,seats));
     QMessageBox msgBox;
-    QString info = trainList.last().ShowTrainInfo();
+    QString info;
+    if(Train(from,to,code,seats)==trainList.last())
+    {
+         info = "Train with this code already exist.";
+    }
+    else
+    {
+         trainList.push_back(Train(from,to,code,seats));
+         info = trainList.last().ShowTrainInfo();
+    }
     msgBox.setText(info);
     msgBox.exec();
+
 }
 
 void MainWindow::on_lineEdit_Code_textChanged(const QString &arg1)
