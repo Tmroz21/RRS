@@ -11,6 +11,7 @@ private:
     QString fTo;
     QString fCode;
     int fAvSeats;
+    QString fSAvSeats = QString::number(fAvSeats);
 
 public:
     Train();
@@ -20,6 +21,10 @@ public:
         return "Code: "+ fCode+" From: "+fFrom+" To "+fTo;
     }
     QString GetCode(void) const  {return fCode;}
+    QString GetTo(void) const  {return fTo;}
+    QString GetFrom(void) const  {return fFrom;}
+    QString GetSAvSeats(void) const  {return fSAvSeats;}
+    int GetAvSeats(void) const {return fAvSeats;}
 
 };
 

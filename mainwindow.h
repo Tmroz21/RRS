@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "qtablewidget.h"
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -26,6 +27,9 @@ private slots:
 
     void on_spinBox_Seats_valueChanged(int arg1);
 
+
+
+    void on_tableWidget_Trains_itemClicked(QTableWidgetItem *item);
 
 private:
     Ui::MainWindow *ui;
