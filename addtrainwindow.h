@@ -1,8 +1,10 @@
 #ifndef ADDTRAINWINDOW_H
 #define ADDTRAINWINDOW_H
 
-#include "mainwindow.h"
+
 #include <QMainWindow>
+//#include <mainwindow.h>
+
 
 namespace Ui { class AddTrainWindow;}
 
@@ -10,7 +12,7 @@ class AddTrainWindow : public QMainWindow
 {
     Q_OBJECT
 
-    MainWindow *mainW = new MainWindow();
+  //  MainWindow *mainW = new MainWindow();
 
 public:
     explicit AddTrainWindow(QWidget *parent = nullptr);

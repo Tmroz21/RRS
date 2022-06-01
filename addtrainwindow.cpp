@@ -1,5 +1,6 @@
 #include "addtrainwindow.h"
 #include "ui_addtrainwindow.h"
+#include "mainwindow.h"
 
 AddTrainWindow::AddTrainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -15,7 +16,7 @@ AddTrainWindow::~AddTrainWindow()
 
 void AddTrainWindow::on_actionStrona_Glowna_triggered()
 {
-    mainW->show();
+
     this->hide();
 }
 
