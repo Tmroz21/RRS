@@ -47,16 +47,17 @@ void MainWindow::on_pushButton_Add_clicked()
          ui->tableWidget_Trains->insertRow(ui->tableWidget_Trains->rowCount());
          QTableWidgetItem *newTrainCode = new QTableWidgetItem(trainList.last().GetCode());
          QTableWidgetItem *newTrainFrom = new QTableWidgetItem(trainList.last().GetFrom());
-         QTableWidgetItem *newTrainTo= new QTableWidgetItem(trainList.last().GetTo());
-         QTableWidgetItem *newTrainAVS= new QTableWidgetItem(trainList.last().GetAvSeats());
+         QTableWidgetItem *newTrainTo = new QTableWidgetItem(trainList.last().GetTo());
+         QTableWidgetItem *newTrainAVS = new QTableWidgetItem(trainList.last().GetSAvSeats());
          ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,0,newTrainCode);
-         ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,2,newTrainFrom);
          ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,1,newTrainTo);
+         ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,2,newTrainFrom);
          ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,3,newTrainAVS);
     }
     msgBox.setText(info);
     msgBox.exec();
 }
+
 
 void MainWindow::on_lineEdit_Code_textChanged(const QString &arg1)
 {
@@ -82,12 +83,9 @@ void MainWindow::on_spinBox_Seats_valueChanged(int arg1)
 }
 
 
-
-
-
 void MainWindow::on_tableWidget_Trains_itemClicked(QTableWidgetItem *item)
 {
     int row = item->row();
-    qDebug("Items in list: %d", row);
+    qDebug("Item row: %d", row);
 }
 

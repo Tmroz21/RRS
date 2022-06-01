@@ -23,7 +23,7 @@
       <height>251</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="0,92222">
+    <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="0,0">
      <property name="sizeConstraint">
       <enum>QLayout::SetDefaultConstraint</enum>
      </property>

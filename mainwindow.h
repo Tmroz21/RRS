@@ -27,8 +27,6 @@ private slots:
 
     void on_spinBox_Seats_valueChanged(int arg1);
 
-
-
     void on_tableWidget_Trains_itemClicked(QTableWidgetItem *item);
 
 private:
