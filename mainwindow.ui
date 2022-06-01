@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>663</width>
-    <height>317</height>
+    <width>660</width>
+    <height>320</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,13 +17,13 @@
    <widget class="QWidget" name="horizontalLayoutWidget_5">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>20</x>
       <y>10</y>
-      <width>611</width>
-      <height>251</height>
+      <width>631</width>
+      <height>261</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="0,0">
+    <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="3,5">
      <property name="sizeConstraint">
       <enum>QLayout::SetDefaultConstraint</enum>
      </property>
@@ -33,7 +33,7 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="1,6">
          <item>
           <widget class="QLabel" name="label_4">
            <property name="text">
@@ -47,7 +47,7 @@
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="1,6">
          <item>
           <widget class="QLabel" name="label_3">
            <property name="text">
@@ -61,7 +61,7 @@
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,6">
          <item>
           <widget class="QLabel" name="label_2">
            <property name="text">
@@ -99,6 +99,9 @@
      </item>
      <item>
       <widget class="QTableWidget" name="tableWidget_Trains">
+       <attribute name="horizontalHeaderDefaultSectionSize">
+        <number>96</number>
+       </attribute>
        <column>
         <property name="text">
          <string>KOD</string>
@@ -129,7 +132,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>663</width>
+     <width>660</width>
      <height>21</height>
     </rect>
    </property>
@@ -144,6 +147,7 @@
      <string>Opcje</string>
     </property>
     <addaction name="actionStrona_Glowna"/>
+    <addaction name="actionDodaj_poloczenie"/>
    </widget>
    <addaction name="menuOpcje"/>
    <addaction name="menuInformacje"/>
@@ -157,6 +161,11 @@
   <action name="actionStrona_Glowna">
    <property name="text">
     <string>Strona Glowna</string>
+   </property>
+  </action>
+  <action name="actionDodaj_poloczenie">
+   <property name="text">
+    <string>Dodaj Polaczenie</string>
    </property>
   </action>
  </widget>

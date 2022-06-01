@@ -89,3 +89,10 @@ void MainWindow::on_tableWidget_Trains_itemClicked(QTableWidgetItem *item)
     qDebug("Item row: %d", row);
 }
 
+
+void MainWindow::on_actionDodaj_poloczenie_triggered()
+{
+    addTrainW->show();
+    this->hide();
+}
+

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AddTrainWindow</class>
+ <widget class="QMainWindow" name="AddTrainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>660</width>
+    <height>320</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>660</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuOpcje">
+    <property name="title">
+     <string>Opcje</string>
+    </property>
+    <addaction name="actionStrona_Glowna"/>
+    <addaction name="actionDodaj_Polaczenie"/>
+   </widget>
+   <widget class="QMenu" name="menuInformacje">
+    <property name="title">
+     <string>Informacje</string>
+    </property>
+    <addaction name="actionTworcy"/>
+   </widget>
+   <addaction name="menuOpcje"/>
+   <addaction name="menuInformacje"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionStrona_Glowna">
+   <property name="text">
+    <string>Strona Glowna</string>
+   </property>
+  </action>
+  <action name="actionTworcy">
+   <property name="text">
+    <string>Tworcy</string>
+   </property>
+  </action>
+  <action name="actionDodaj_Polaczenie">
+   <property name="text">
+    <string>Dodaj Polaczenie</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
