@@ -1,7 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "addtrainwindow.h"
+//#include "addtrainwindow.h"
 #include "qtablewidget.h"
 #include <QMainWindow>
 
@@ -12,7 +12,7 @@ QT_END_NAMESPACE
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
-    AddTrainWindow *addTrainW = new AddTrainWindow();
+    //AddTrainWindow *addTrainW = new AddTrainWindow();
 
 public:
     MainWindow(QWidget *parent = nullptr);

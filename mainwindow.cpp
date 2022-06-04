@@ -92,7 +92,7 @@ void MainWindow::on_tableWidget_Trains_itemClicked(QTableWidgetItem *item)
 
 void MainWindow::on_actionDodaj_poloczenie_triggered()
 {
-    addTrainW->show();
+   // addTrainW->show();
     this->hide();
 }
 
