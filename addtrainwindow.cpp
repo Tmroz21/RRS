@@ -1,10 +1,12 @@
 #include "addtrainwindow.h"
 #include "qmessagebox.h"
+#include "qtablewidget.h"
 #include "train.h"
 #include "train.cpp"
 #include "ui_addtrainwindow.h"
 #include <fstream>
 #include <iostream>
+#include "dbmanager.h"
 
 
  QString code;
@@ -12,7 +14,8 @@
  QString to;
  int seats;
  QVector<Train> trainList;
-  QVector<Train> trainRead;
+ QVector<Train> trainRead;
+ static const QString path = "trains.db";
 
 
 AddTrainWindow::AddTrainWindow(QWidget *parent) :
@@ -52,72 +55,41 @@ void AddTrainWindow::on_spinBox_Seats_valueChanged(int arg1)
 
 
 void AddTrainWindow::on_pushButton_Add_clicked()
-{
-        QMessageBox msgBox;
-        QString info;
-        bool isTrainInList = 0;
-        for(int i=0;i<trainList.size();i++)
-        {
-            if(Train(from,to,code,seats)==trainList[i])
-            {
-                 info = "Train with this code already exist.";
-                 isTrainInList = 1;
-                 break;
+{   
+    QMessageBox msgBox;
+    QString info;
+    DbManager db(path);
 
-            }
+    if(db.personExists(code) == 0)
+    {
+        if (db.isOpen())
+        {
+            info = "Train successfully added";
+            db.createTable();   // Creates a table if it doens't exist. Otherwise, it will use existing table.
+            db.addPerson(code,from,to);
+            db.printAllPersons();
         }
-        if(isTrainInList == 0)
+        else
         {
-             trainList.push_back(Train(from,to,code,seats));
-             qDebug("Items in list: %lld", trainList.size());
-             info = trainList.last().ShowTrainInfo();
-             std::ofstream fileObj;
-             fileObj.open("Input.txt", std::ios::app);
-             Train obj = Train(from,to,code,seats);;
-            // obj.SetCode(obj.GetCode());
-            // obj.SetTo(obj.GetTo());
-            // obj.SetFrom(obj.GetFrom());
-            // obj.SetAVS(obj.GetAvSeats());
-             fileObj.write((char*)&obj,sizeof(obj));
-             fileObj.close();
-             Train obj2;
-             trainList.push_back(obj2);
-             trainList.last().outputTest();
-
-             //ReadFromFile();
-
-             //
-             ui->tableWidget_Trains->insertRow(ui->tableWidget_Trains->rowCount());
-             QTableWidgetItem *newTrainCode = new QTableWidgetItem(trainList.last().GetCode());
-             QTableWidgetItem *newTrainFrom = new QTableWidgetItem(trainList.last().GetFrom());
-             QTableWidgetItem *newTrainTo = new QTableWidgetItem(trainList.last().GetTo());
-             QTableWidgetItem *newTrainAVS = new QTableWidgetItem(trainList.last().GetSAvSeats());
-             ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,0,newTrainCode);
-             ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,1,newTrainTo);
-             ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,2,newTrainFrom);
-             ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,3,newTrainAVS);
+            qDebug() << "Database is not open!";
+            info = "App can not connect to database.";
+        }
+        qDebug("Items in list: %lld", trainList.size());
+        ui->tableWidget_Trains->insertRow(ui->tableWidget_Trains->rowCount());
+        QTableWidgetItem *newTrainCode = new QTableWidgetItem(code);
+        QTableWidgetItem *newTrainFrom = new QTableWidgetItem(from);
+        QTableWidgetItem *newTrainTo = new QTableWidgetItem(to);
+        QTableWidgetItem *newTrainAVS = new QTableWidgetItem(QString::number(seats));
+        ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,0,newTrainCode);
+        ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,1,newTrainTo);
+        ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,2,newTrainFrom);
+        ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,3,newTrainAVS);
+        }
+        else
+        {
+            info = "Train with this code already exist.";
         }
         msgBox.setText(info);
         msgBox.exec();
-}
-void AddTrainWindow::ReadFromFile()
-{
-    std::ifstream file_obj;
-
-    // Opening file in input mode
-    file_obj.open("Input.txt", std::ios::in);
-
-    // Object of class contestant to input data in file
-    Train obj2;
-    //obj.outputTest();
-    //std::auto_ptr<Train> obj2(new Train);
-    // Reading from file into object "obj"
-    file_obj.read((char*)&obj2, sizeof(obj2));
-    qDebug("seats: %d",obj2.GetAvSeats());
-    qDebug()<<obj2.GetCode()<<"code";
-    trainRead.push_back(obj2);
-    qDebug()<<trainRead.last().GetCode()<<"code";
-    qDebug("Items in list: %lld", trainRead.size());
-    file_obj.close();
 }
 

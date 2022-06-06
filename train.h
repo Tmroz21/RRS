@@ -34,10 +34,7 @@ public:
     QString GetFrom(void) const  {return fFrom;}
     QString GetSAvSeats(void) const  {return fSAvSeats;}
     int GetAvSeats(void) const {return fAvSeats;}
-
-    int input();
-
-    int outputTest();
+;
 
 };
 

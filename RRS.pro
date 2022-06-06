@@ -1,4 +1,6 @@
 QT       += core gui
+QT       += sql
+QT       += core sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -10,12 +12,14 @@ CONFIG += c++17
 
 SOURCES += \
     addtrainwindow.cpp \
+    dbmanager.cpp \
     main.cpp \
     mainwindow.cpp \
     train.cpp
 
 HEADERS += \
     addtrainwindow.h \
+    dbmanager.h \
     mainwindow.h \
     train.h
 
