@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>RRS</class>
- <widget class="QMainWindow" name="RRS">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -13,127 +13,14 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="horizontalLayoutWidget_5">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>10</y>
-      <width>631</width>
-      <height>261</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="3,5">
-     <property name="sizeConstraint">
-      <enum>QLayout::SetDefaultConstraint</enum>
-     </property>
-     <property name="rightMargin">
-      <number>0</number>
-     </property>
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="1,6">
-         <item>
-          <widget class="QLabel" name="label_4">
-           <property name="text">
-            <string>z</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_From"/>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="1,6">
-         <item>
-          <widget class="QLabel" name="label_3">
-           <property name="text">
-            <string>Do</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_To"/>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,6">
-         <item>
-          <widget class="QLabel" name="label_2">
-           <property name="text">
-            <string>Kod</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_Code"/>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <item>
-          <widget class="QLabel" name="label">
-           <property name="text">
-            <string>Miejsca</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QSpinBox" name="spinBox_Seats"/>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_Add">
-         <property name="text">
-          <string>Dodaj</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <widget class="QTableWidget" name="tableWidget_Trains">
-       <attribute name="horizontalHeaderDefaultSectionSize">
-        <number>96</number>
-       </attribute>
-       <column>
-        <property name="text">
-         <string>KOD</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>TO</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>FROM</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>Avalible seats</string>
-        </property>
-       </column>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-  </widget>
+  <widget class="QWidget" name="centralwidget"/>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
      <width>660</width>
-     <height>21</height>
+     <height>17</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuInformacje">
