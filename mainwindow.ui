@@ -59,6 +59,7 @@
     </property>
     <addaction name="actionStrona_Glowna"/>
     <addaction name="actionDodaj_poloczenie"/>
+    <addaction name="actionUsu"/>
    </widget>
    <addaction name="menuOpcje"/>
    <addaction name="menuInformacje"/>
@@ -71,12 +72,17 @@
   </action>
   <action name="actionStrona_Glowna">
    <property name="text">
-    <string>Strona Glowna</string>
+    <string>Strona Główna</string>
    </property>
   </action>
   <action name="actionDodaj_poloczenie">
    <property name="text">
     <string>Dodaj Polaczenie</string>
+   </property>
+  </action>
+  <action name="actionUsu">
+   <property name="text">
+    <string>Usuń </string>
    </property>
   </action>
  </widget>

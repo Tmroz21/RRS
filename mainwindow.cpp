@@ -16,15 +16,15 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    AddTrainToScroll();
+    qDebug() << db.countAllTrain();
 }
 
 void MainWindow::AddTrainToScroll()
 {
 
-    QPushButton *button = new QPushButton(db.printToTable());
-    lay->addWidget(button);
-    ui->scrollContent->setLayout(lay);
+   // QPushButton *button = new QPushButton(db.printToTable());
+    //lay->addWidget(button);
+    //ui->scrollContent->setLayout(lay);
 
 }
 
@@ -43,5 +43,11 @@ void MainWindow::on_actionDodaj_poloczenie_triggered()
 void MainWindow::on_actionTworcy_triggered()
 {
     QMessageBox msgBoxTworcy;
+}
+
+
+void MainWindow::on_actionUsu_triggered()
+{
+    db.removeAllTrain();
 }
 

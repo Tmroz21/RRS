@@ -15,17 +15,19 @@ public:
 
     bool createTable();
 
-    bool addPerson(const QString& name, const QString& code, const QString &to);
+    bool addTrain(const QString& name, const QString& code, const QString &to);
 
-    bool removePerson(const QString& name);
+    bool removeTrain(const QString& name);
 
-    bool personExists(const QString& name) const;
+    bool trainExists(const QString& name) const;
 
-    void printAllPersons() const;
+    void printAllTrains() const;
 
-    QString printToTable();
+    void printToTable() const;
 
-    bool removeAllPersons();
+    bool removeAllTrain();
+
+    int countAllTrain();
 private:
     QSqlDatabase m_db;
 

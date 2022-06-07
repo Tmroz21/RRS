@@ -61,32 +61,32 @@ void AddTrainWindow::on_pushButton_Add_clicked()
     QString info;
     DbManager db(path);
 
-    if(db.personExists(code) == 0)
+    if(db.trainExists(code) == 0)
     {
         if (db.isOpen())
         {
             info = "Train successfully added";
             db.createTable();
-            db.addPerson(code,from,to);
-            db.printAllPersons();
+            db.addTrain(code,from,to);
+            //db.printAllTrains();
         }
         else
         {
             qDebug() << "Database is not open!";
             info = "App can not connect to database.";
         }
-        MainWindow window;
-        //window.AddTrainToScroll(code,from,to);
-        qDebug("Items in list: %lld", trainList.size());
-        ui->tableWidget_Trains->insertRow(ui->tableWidget_Trains->rowCount());
-        QTableWidgetItem *newTrainCode = new QTableWidgetItem(code);
-        QTableWidgetItem *newTrainFrom = new QTableWidgetItem(from);
-        QTableWidgetItem *newTrainTo = new QTableWidgetItem(to);
-        QTableWidgetItem *newTrainAVS = new QTableWidgetItem(QString::number(seats));
-        ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,0,newTrainCode);
-        ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,1,newTrainTo);
-        ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,2,newTrainFrom);
-        ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,3,newTrainAVS);
+//        MainWindow window;
+//        window.AddTrainToScroll(code,from,to);
+//        qDebug("Items in list: %lld", trainList.size());
+//        ui->tableWidget_Trains->insertRow(ui->tableWidget_Trains->rowCount());
+//        QTableWidgetItem *newTrainCode = new QTableWidgetItem(code);
+//        QTableWidgetItem *newTrainFrom = new QTableWidgetItem(from);
+//        QTableWidgetItem *newTrainTo = new QTableWidgetItem(to);
+//        QTableWidgetItem *newTrainAVS = new QTableWidgetItem(QString::number(seats));
+//        ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,0,newTrainCode);
+//        ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,1,newTrainTo);
+//        ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,2,newTrainFrom);
+//        ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,3,newTrainAVS);
         }
         else
         {

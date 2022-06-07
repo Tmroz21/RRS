@@ -26,6 +26,8 @@ private slots:
 
     void on_actionTworcy_triggered();
 
+    void on_actionUsu_triggered();
+
 private:
     Ui::MainWindow *ui;
 };

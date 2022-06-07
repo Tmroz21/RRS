@@ -3,7 +3,7 @@
 #include <QSqlError>
 #include <QSqlRecord>
 #include <QDebug>
-
+int  count;
 DbManager::DbManager(const QString& path)
 {
    m_db = QSqlDatabase::addDatabase("QSQLITE");
@@ -18,6 +18,7 @@ DbManager::DbManager(const QString& path)
       qDebug() << "Database: connection ok";
    }
 }
+
 DbManager::~DbManager()
 {
     if (m_db.isOpen())
@@ -25,6 +26,7 @@ DbManager::~DbManager()
         m_db.close();
     }
 }
+
 bool DbManager::isOpen() const
 {
     return m_db.isOpen();
@@ -46,7 +48,7 @@ bool DbManager::createTable()
     return success;
 }
 
-bool DbManager::addPerson(const QString& code, const QString& from , const QString& to)
+bool DbManager::addTrain(const QString& code, const QString& from , const QString& to)
 {
     bool success = false;
 
@@ -75,11 +77,11 @@ bool DbManager::addPerson(const QString& code, const QString& from , const QStri
     return success;
 }
 
-bool DbManager::removePerson(const QString& code)
+bool DbManager::removeTrain(const QString& code)
 {
     bool success = false;
 
-    if (personExists(code))
+    if (trainExists(code))
     {
         QSqlQuery queryDelete;
         queryDelete.prepare("DELETE FROM trains WHERE code = (:code)");
@@ -99,38 +101,43 @@ bool DbManager::removePerson(const QString& code)
     return success;
 }
 
-void DbManager::printAllPersons() const
+void DbManager::printAllTrains() const
 {
     qDebug() << "Persons in db:";
     QSqlQuery query("SELECT * FROM trains");
     int idCode = query.record().indexOf("code");
     int idFrom = query.record().indexOf("from_");
     int idTo = query.record().indexOf("to_");
+    int count = 0;
     while (query.next())
     {
         QString code = query.value(idCode).toString();
         QString from = query.value(idFrom).toString();
         QString to = query.value(idTo).toString();
         qDebug() << "===" << code << "==="<< from <<"==="<<to;
+        count += 1;
     }
+     qDebug() << QString::number(count);
 }
-
-QString DbManager::printToTable(){
+void DbManager::printToTable() const
+{
     QSqlQuery query("SELECT * FROM trains");
     int idCode = query.record().indexOf("code");
     int idFrom = query.record().indexOf("from_");
     int idTo = query.record().indexOf("to_");
+    count = 0;
     while (query.next())
     {
         QString code = query.value(idCode).toString();
         QString from = query.value(idFrom).toString();
         QString to = query.value(idTo).toString();
         QString info =  "===" + code + "===" + from + "===";
-        return info;
+        qDebug() << code;
+        count += 1;
     }
+    qDebug() << QString::number(count);
 }
-
-bool DbManager::personExists(const QString& code) const
+bool DbManager::trainExists(const QString& code) const
 {
     bool exists = false;
 
@@ -153,12 +160,12 @@ bool DbManager::personExists(const QString& code) const
     return exists;
 }
 
-bool DbManager::removeAllPersons()
+bool DbManager::removeAllTrain()
 {
     bool success = false;
 
     QSqlQuery removeQuery;
-    removeQuery.prepare("DELETE FROM ");
+    removeQuery.prepare("DELETE FROM trains ");
 
     if (removeQuery.exec())
     {
@@ -166,8 +173,18 @@ bool DbManager::removeAllPersons()
     }
     else
     {
-        qDebug() << "remove all persons failed: " << removeQuery.lastError();
+        qDebug() << "remove all trains failed: " << removeQuery.lastError();
     }
 
     return success;
+}
+
+int DbManager::countAllTrain()
+{
+    QSqlQuery query("SELECT COUNT(*) as cnt FROM trains");
+    if (query.next())
+    {
+        return query.value(0).toInt();
+    }
+    return 0;
 }
