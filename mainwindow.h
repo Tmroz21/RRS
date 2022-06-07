@@ -18,6 +18,8 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void AddTrainToScroll();
+
 private slots:
 
     void on_actionDodaj_poloczenie_triggered();

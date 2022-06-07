@@ -7,6 +7,7 @@
 #include <fstream>
 #include <iostream>
 #include "dbmanager.h"
+#include <mainwindow.h>
 
 
  QString code;
@@ -65,7 +66,7 @@ void AddTrainWindow::on_pushButton_Add_clicked()
         if (db.isOpen())
         {
             info = "Train successfully added";
-            db.createTable();   // Creates a table if it doens't exist. Otherwise, it will use existing table.
+            db.createTable();
             db.addPerson(code,from,to);
             db.printAllPersons();
         }
@@ -74,6 +75,8 @@ void AddTrainWindow::on_pushButton_Add_clicked()
             qDebug() << "Database is not open!";
             info = "App can not connect to database.";
         }
+        MainWindow window;
+        //window.AddTrainToScroll(code,from,to);
         qDebug("Items in list: %lld", trainList.size());
         ui->tableWidget_Trains->insertRow(ui->tableWidget_Trains->rowCount());
         QTableWidgetItem *newTrainCode = new QTableWidgetItem(code);

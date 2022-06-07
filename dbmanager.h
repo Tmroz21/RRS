@@ -23,6 +23,8 @@ public:
 
     void printAllPersons() const;
 
+    QString printToTable();
+
     bool removeAllPersons();
 private:
     QSqlDatabase m_db;

@@ -115,6 +115,21 @@ void DbManager::printAllPersons() const
     }
 }
 
+QString DbManager::printToTable(){
+    QSqlQuery query("SELECT * FROM trains");
+    int idCode = query.record().indexOf("code");
+    int idFrom = query.record().indexOf("from_");
+    int idTo = query.record().indexOf("to_");
+    while (query.next())
+    {
+        QString code = query.value(idCode).toString();
+        QString from = query.value(idFrom).toString();
+        QString to = query.value(idTo).toString();
+        QString info =  "===" + code + "===" + from + "===";
+        return info;
+    }
+}
+
 bool DbManager::personExists(const QString& code) const
 {
     bool exists = false;
