@@ -12,3 +12,10 @@ LoginWindow::~LoginWindow()
 {
     delete ui;
 }
+
+void LoginWindow::on_pushButton_login_clicked()
+{
+        m.show();
+        this->hide();
+}
+
