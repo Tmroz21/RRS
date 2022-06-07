@@ -3,7 +3,7 @@
 #include <QSqlError>
 #include <QSqlRecord>
 #include <QDebug>
-int  count;
+
 DbManager::DbManager(const QString& path)
 {
    m_db = QSqlDatabase::addDatabase("QSQLITE");
@@ -106,37 +106,36 @@ void DbManager::printAllTrains() const
     qDebug() << "Persons in db:";
     QSqlQuery query("SELECT * FROM trains");
     int idCode = query.record().indexOf("code");
+    qDebug() << idCode;
     int idFrom = query.record().indexOf("from_");
+    qDebug() << idCode;
     int idTo = query.record().indexOf("to_");
-    int count = 0;
+    qDebug() << idCode;
     while (query.next())
     {
         QString code = query.value(idCode).toString();
+        qDebug() << QString::number(idCode)+" code ID";
         QString from = query.value(idFrom).toString();
+        qDebug() << QString::number(idCode)+" from ID";
         QString to = query.value(idTo).toString();
+        qDebug() << QString::number(idCode)+" to ID";
         qDebug() << "===" << code << "==="<< from <<"==="<<to;
-        count += 1;
     }
-     qDebug() << QString::number(count);
 }
-void DbManager::printToTable() const
+
+QString DbManager::printToTable()
 {
-    QSqlQuery query("SELECT * FROM trains");
-    int idCode = query.record().indexOf("code");
-    int idFrom = query.record().indexOf("from_");
-    int idTo = query.record().indexOf("to_");
-    count = 0;
-    while (query.next())
+    QSqlQuery queryPrint("SELECT * FROM trains");
+    QSqlRecord pr = queryPrint.record();
+    qDebug() << "numb of col" << pr.count();
+    int nameCol = pr.indexOf("code");
+    while(queryPrint.next())
     {
-        QString code = query.value(idCode).toString();
-        QString from = query.value(idFrom).toString();
-        QString to = query.value(idTo).toString();
-        QString info =  "===" + code + "===" + from + "===";
-        qDebug() << code;
-        count += 1;
+         queryPrint.value(nameCol).toString();
     }
-    qDebug() << QString::number(count);
+    return 0;
 }
+
 bool DbManager::trainExists(const QString& code) const
 {
     bool exists = false;
@@ -179,7 +178,7 @@ bool DbManager::removeAllTrain()
     return success;
 }
 
-int DbManager::countAllTrain()
+int DbManager::countAllTrains()
 {
     QSqlQuery query("SELECT COUNT(*) as cnt FROM trains");
     if (query.next())
