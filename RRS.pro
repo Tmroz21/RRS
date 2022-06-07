@@ -13,6 +13,7 @@ CONFIG += c++17
 SOURCES += \
     addtrainwindow.cpp \
     dbmanager.cpp \
+    loginwindow.cpp \
     main.cpp \
     mainwindow.cpp \
     train.cpp
@@ -20,11 +21,13 @@ SOURCES += \
 HEADERS += \
     addtrainwindow.h \
     dbmanager.h \
+    loginwindow.h \
     mainwindow.h \
     train.h
 
 FORMS += \
     addtrainwindow.ui \
+    loginwindow.ui \
     mainwindow.ui
 
 # Default rules for deployment.
