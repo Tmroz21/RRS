@@ -23,11 +23,11 @@ public:
 
     void printAllTrains() const;
 
-    void printToTable() const;
+    QString printToTable();
 
     bool removeAllTrain();
 
-    int countAllTrain();
+    int countAllTrains();
 private:
     QSqlDatabase m_db;
 
