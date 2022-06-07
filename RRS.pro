@@ -16,6 +16,7 @@ SOURCES += \
     loginwindow.cpp \
     main.cpp \
     mainwindow.cpp \
+    registerdb.cpp \
     train.cpp
 
 HEADERS += \
@@ -23,6 +24,7 @@ HEADERS += \
     dbmanager.h \
     loginwindow.h \
     mainwindow.h \
+    registerdb.h \
     train.h
 
 FORMS += \
