@@ -1,22 +1,31 @@
 #include "mainwindow.h"
 #include "addtrainwindow.h"
+#include "dbmanager.h"
 #include "ui_mainwindow.h"
-//#include "train.h"
-//#include "train.cpp"
 
 #include <QMessageBox>
+#include <QPushButton>
+#include <QVBoxLayout>
 
- //QString code;
-// QString from;
-// QString to;
-// int seats;
-// QVector<Train> trainList;
+ QVBoxLayout * lay = new QVBoxLayout();
+ static const QString path = "trains.db";
+ DbManager db(path);
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    AddTrainToScroll();
+}
+
+void MainWindow::AddTrainToScroll()
+{
+
+    QPushButton *button = new QPushButton(db.printToTable());
+    lay->addWidget(button);
+    ui->scrollContent->setLayout(lay);
+
 }
 
 MainWindow::~MainWindow()

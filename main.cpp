@@ -1,3 +1,4 @@
+#include "loginwindow.h"
 #include "mainwindow.h"
 #include <dbmanager.h>
 #include <QApplication>
@@ -7,7 +8,8 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
+    LoginWindow l;
+    //MainWindow w;
+    l.show();
     return a.exec();
 }
