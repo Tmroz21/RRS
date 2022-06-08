@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
     for(int i=1;i<=db.countAllTrains();i++){
         AddTrainToScroll(i);
     }
+    ui->groupBox->hide();
 
 }
 
@@ -33,10 +34,10 @@ void MainWindow::AddTrainToScroll(int id)
             ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,1,newTrainTo);
             ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,2,newTrainFrom);
             ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,3,newTrainAVS);
-            ui->tableWidget_Trains->setColumnWidth(0, 20);
-            ui->tableWidget_Trains->setColumnWidth(1, 65);
-            ui->tableWidget_Trains->setColumnWidth(2, 65);
-            ui->tableWidget_Trains->setColumnWidth(3, 48);
+            ui->tableWidget_Trains->setColumnWidth(0, 30);
+            ui->tableWidget_Trains->setColumnWidth(1, 120);
+            ui->tableWidget_Trains->setColumnWidth(2, 120);
+            ui->tableWidget_Trains->setColumnWidth(3, 55);
 
 }
 
@@ -63,4 +64,24 @@ void MainWindow::on_actionUsu_triggered()
     db.removeAllTrain();
 }
 
+
+void MainWindow::on_pushButton_clicked()
+{
+    DbManager db(path);
+    for(int i=ui->tableWidget_Trains->rowCount()-1;i>=0;i--){
+        ui->tableWidget_Trains->removeRow(i);
+    }
+    for(int i=1;i<=db.countAllTrains();i++){
+        AddTrainToScroll(i);
+    }
+
+}
+
+
+void MainWindow::on_tableWidget_Trains_cellClicked(int row, int column)
+{
+    ui->groupBox->show();
+    ui->label_from->setText(db.printFromToTableByID(row+1));
+    ui->label_to->setText(db.printToToTableByID(row+1));
+}
 
