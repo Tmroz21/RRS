@@ -23,8 +23,20 @@
       <height>259</height>
      </rect>
     </property>
+    <property name="cursor" stdset="0">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="mouseTracking">
+     <bool>false</bool>
+    </property>
+    <property name="tabletTracking">
+     <bool>false</bool>
+    </property>
     <attribute name="horizontalHeaderDefaultSectionSize">
      <number>96</number>
+    </attribute>
+    <attribute name="verticalHeaderMinimumSectionSize">
+     <number>14</number>
     </attribute>
     <column>
      <property name="text">

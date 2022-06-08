@@ -33,11 +33,11 @@ void MainWindow::AddTrainToScroll(int id)
             QTableWidgetItem *newTrainCode  = new QTableWidgetItem(db.printCodeToTableByID(id));
             QTableWidgetItem *newTrainFrom = new QTableWidgetItem(db.printFromToTableByID(id));
             QTableWidgetItem *newTrainTo = new QTableWidgetItem(db.printToToTableByID(id));
-           // QTableWidgetItem *newTrainAVS = new QTableWidgetItem(QString::number(seats));
+            QTableWidgetItem *newTrainAVS = new QTableWidgetItem(QString::number(db.printSeatsToTableByID(id)));
             ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,0,newTrainCode);
             ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,1,newTrainTo);
             ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,2,newTrainFrom);
-            //ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,3,newTrainAVS);
+            ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,3,newTrainAVS);
 
 }
 

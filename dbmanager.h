@@ -15,7 +15,7 @@ public:
 
     bool createTable();
 
-    bool addTrain(const QString& name, const QString& code, const QString &to);
+    bool addTrain(const QString& name, const QString& code, const QString &to, int seats);
 
     bool removeTrain(const QString& name);
 
@@ -28,6 +28,8 @@ public:
     QString printFromToTableByID(int id);
 
     QString printToToTableByID(int id);
+
+    int printSeatsToTableByID(int id);
 
     bool removeAllTrain();
 

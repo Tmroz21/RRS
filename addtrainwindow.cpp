@@ -67,7 +67,7 @@ void AddTrainWindow::on_pushButton_Add_clicked()
         {
             info = "Train successfully added";
             db.createTable();
-            db.addTrain(code,from,to);
+            db.addTrain(code,from,to,seats);
             //db.printAllTrains();
         }
         else
