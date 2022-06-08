@@ -37,7 +37,6 @@ void LoginWindow::on_pushButton_register_clicked()
 {
     QString username = ui->lineEdit_username->text();
     QString password = ui->lineEdit_password->text();
-    rdb.userAdd(username, password);
 
     if(rdb.userExists(username) == false)
     {
