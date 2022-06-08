@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>660</width>
+    <width>310</width>
     <height>320</height>
    </rect>
   </property>
@@ -18,11 +18,11 @@
     <rect>
      <x>20</x>
      <y>30</y>
-     <width>631</width>
+     <width>271</width>
      <height>261</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="3,5">
+   <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="3">
     <property name="sizeConstraint">
      <enum>QLayout::SetDefaultConstraint</enum>
     </property>
@@ -95,33 +95,6 @@
        </widget>
       </item>
      </layout>
-    </item>
-    <item>
-     <widget class="QTableWidget" name="tableWidget_Trains">
-      <attribute name="horizontalHeaderDefaultSectionSize">
-       <number>96</number>
-      </attribute>
-      <column>
-       <property name="text">
-        <string>KOD</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>TO</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>FROM</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Avalible seats</string>
-       </property>
-      </column>
-     </widget>
     </item>
    </layout>
   </widget>

@@ -33,6 +33,10 @@ public:
 
     bool removeAllTrain();
 
+    void updateSeatsNumber(int id, int seats);
+
+    int printIDByCode(QString code);
+
     int countAllTrains();
 private:
     QSqlDatabase m_db;
