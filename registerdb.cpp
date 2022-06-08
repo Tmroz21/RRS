@@ -36,7 +36,7 @@ bool RegisterDb::createTable()
         bool success = false;
 
         QSqlQuery query;
-        query.prepare("CREATE TABLE registration(id INTEGER PRIMARY KEY, UserName TEXT, Password TEXT);");
+        query.prepare("CREATE TABLE users(id INTEGER PRIMARY KEY, username TEXT, password TEXT);");
 
         if (!query.exec())
         {
@@ -53,9 +53,9 @@ bool RegisterDb::userAdd(const QString& UserName, const QString& Password)
         if (!UserName.isEmpty())
         {
             QSqlQuery queryAdd;
-            queryAdd.prepare("INSERT INTO registration (UserName, Password) VALUES (:UserName, :Password)");
-            queryAdd.bindValue(":UserName", UserName);
-            queryAdd.bindValue(":UserName", Password);
+            queryAdd.prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
+            queryAdd.bindValue(":username", UserName);
+            queryAdd.bindValue(":password", Password);
 
             if(queryAdd.exec())
             {
@@ -73,19 +73,20 @@ bool RegisterDb::userAdd(const QString& UserName, const QString& Password)
 
         return success;
 }
-bool RegisterDb::userExists(const QString& userName) const
+bool RegisterDb::userExists(const QString& username) const
 {
     bool exists = false;
 
     QSqlQuery checkQuery;
-    checkQuery.prepare("SELECT userName FROM registration WHERE userName = (:userName)");
-    checkQuery.bindValue(":userName", userName);
+    checkQuery.prepare("SELECT username FROM users WHERE username = (:username)");
+    checkQuery.bindValue(":username", username);
 
     if (checkQuery.exec())
     {
         if (checkQuery.next())
         {
             exists = true;
+            qDebug() << "User exists";
         }
     }
     else
@@ -94,4 +95,23 @@ bool RegisterDb::userExists(const QString& userName) const
     }
 
     return exists;
+}
+
+QString RegisterDb::userPassword(QString username)
+{
+    QSqlQuery queryPrint;
+    queryPrint.prepare("SELECT password FROM users WHERE username = (:username)");
+    queryPrint.bindValue(":username", username);
+    if(queryPrint.exec())
+    {
+        while (queryPrint.next())
+        {
+            return queryPrint.value(0).toString();
+        }
+    }
+    else
+    {
+        qDebug() << queryPrint.lastError();
+    }
+    return 0;
 }

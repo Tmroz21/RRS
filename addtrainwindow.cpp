@@ -16,7 +16,7 @@
  int seats;
  QVector<Train> trainList;
  QVector<Train> trainRead;
- static const QString path = "trains.db";
+ static const QString path = "database.db";
 
 
 AddTrainWindow::AddTrainWindow(QWidget *parent) :

@@ -16,7 +16,11 @@ public:
 
     bool userAdd(const QString& userName, const QString& password);
 
-    bool userExists(const QString& userName) const;
+    bool userExists(const QString& username) const;
+
+    QString userPassword(QString username);
+
+
 
 private:
     QSqlDatabase r_db;

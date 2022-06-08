@@ -14,28 +14,38 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QScrollArea" name="scrollArea">
+   <widget class="QTableWidget" name="tableWidget_Trains">
     <property name="geometry">
      <rect>
-      <x>29</x>
-      <y>29</y>
-      <width>221</width>
-      <height>231</height>
+      <x>10</x>
+      <y>10</y>
+      <width>391</width>
+      <height>259</height>
      </rect>
     </property>
-    <property name="widgetResizable">
-     <bool>true</bool>
-    </property>
-    <widget class="QWidget" name="scrollContent">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>219</width>
-       <height>229</height>
-      </rect>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>96</number>
+    </attribute>
+    <column>
+     <property name="text">
+      <string>KOD</string>
      </property>
-    </widget>
+    </column>
+    <column>
+     <property name="text">
+      <string>TO</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>FROM</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Avalible seats</string>
+     </property>
+    </column>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
