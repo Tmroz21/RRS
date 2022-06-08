@@ -123,15 +123,21 @@ void DbManager::printAllTrains() const
     }
 }
 
-QString DbManager::printToTable()
+QString DbManager::printToTableByID(int id)
 {
-    QSqlQuery queryPrint("SELECT * FROM trains");
-    QSqlRecord pr = queryPrint.record();
-    qDebug() << "numb of col" << pr.count();
-    int nameCol = pr.indexOf("code");
-    while(queryPrint.next())
+    QSqlQuery queryPrint;
+    queryPrint.prepare("SELECT code, from_, to_ FROM trains WHERE id = (:id)");
+    queryPrint.bindValue(":id",id);
+    if(queryPrint.exec())
     {
-         queryPrint.value(nameCol).toString();
+        while (queryPrint.next())
+        {
+            return queryPrint.value(0).toString() + " - z " +queryPrint.value(1).toString() +" do "+ queryPrint.value(2).toString();
+        }
+    }
+    else
+    {
+        qDebug() << queryPrint.lastError();
     }
     return 0;
 }

@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "addtrainwindow.h"
+#include "qpushbutton.h"
 #include "qtablewidget.h"
 #include <QMainWindow>
 
@@ -18,7 +19,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    void AddTrainToScroll();
+    void AddTrainToScroll(int id);
 
 private slots:
 
@@ -27,6 +28,8 @@ private slots:
     void on_actionTworcy_triggered();
 
     void on_actionUsu_triggered();
+
+    void on_button_clicked();
 
 private:
     Ui::MainWindow *ui;

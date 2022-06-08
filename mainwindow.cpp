@@ -16,18 +16,19 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    //qDebug() << db.countAllTrains();
-    qDebug() << db.printToTable();
-    //db.printAllTrains();
+    for(int i=1;i<=db.countAllTrains();i++){
+        AddTrainToScroll(i);
+    }
 
 }
 
-void MainWindow::AddTrainToScroll()
+void MainWindow::AddTrainToScroll(int id)
 {
 
-   // QPushButton *button = new QPushButton(db.printToTable());
-    //lay->addWidget(button);
-    //ui->scrollContent->setLayout(lay);
+    QPushButton *button = new QPushButton(db.printToTableByID(id));
+    QObject::connect(button, &QPushButton::clicked,this,&MainWindow::on_button_clicked);
+    lay->addWidget(button);
+    ui->scrollContent->setLayout(lay);
 
 }
 
@@ -52,5 +53,12 @@ void MainWindow::on_actionTworcy_triggered()
 void MainWindow::on_actionUsu_triggered()
 {
     db.removeAllTrain();
+}
+
+void MainWindow::on_button_clicked()
+{
+    qDebug() << "text";
+
+
 }
 
