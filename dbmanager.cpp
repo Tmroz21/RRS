@@ -6,17 +6,17 @@
 
 DbManager::DbManager(const QString& path)
 {
-   m_db = QSqlDatabase::addDatabase("QSQLITE");
-   m_db.setDatabaseName(path);
+    m_db = QSqlDatabase::addDatabase("QSQLITE");
+    m_db.setDatabaseName(path);
 
-   if (!m_db.open())
-   {
-      qDebug() << "Error: connection with database failed";
-   }
-   else
-   {
-      qDebug() << "Database: connection ok";
-   }
+    if (!m_db.open())
+    {
+        qDebug() << "Error: connection with database failed";
+    }
+    else
+    {
+        qDebug() << "Database: connection ok";
+    }
 }
 
 DbManager::~DbManager()
@@ -37,7 +37,7 @@ bool DbManager::createTable()
     bool success = false;
 
     QSqlQuery query;
-    query.prepare("CREATE TABLE trains(id INTEGER PRIMARY KEY, code TEXT, from_ TEXT, to_ TEXT);");
+    query.prepare("CREATE TABLE trains(id INTEGER PRIMARY KEY, code TEXT, from_ TEXT, to_ TEXT, seats INT(255));");
 
     if (!query.exec())
     {
@@ -48,17 +48,18 @@ bool DbManager::createTable()
     return success;
 }
 
-bool DbManager::addTrain(const QString& code, const QString& from , const QString& to)
+bool DbManager::addTrain(const QString& code, const QString& from , const QString& to, int seats)
 {
     bool success = false;
 
     if (!code.isEmpty())
     {
         QSqlQuery queryAdd;
-        queryAdd.prepare("INSERT INTO trains (code, from_, to_) VALUES (:code, :from_, :to_)");
+        queryAdd.prepare("INSERT INTO trains (code, from_, to_, seats) VALUES (:code, :from_, :to_, :seats)");
         queryAdd.bindValue(":code", code);
         queryAdd.bindValue(":from_", from);
         queryAdd.bindValue(":to_", to);
+        queryAdd.bindValue(":seats", seats);
 
         if(queryAdd.exec())
         {
@@ -179,6 +180,26 @@ QString DbManager::printToToTableByID(int id)
     }
     return 0;
 }
+
+int DbManager::printSeatsToTableByID(int id)
+{
+    QSqlQuery queryPrint;
+    queryPrint.prepare("SELECT seats FROM trains WHERE id = (:id)");
+    queryPrint.bindValue(":id",id);
+    if(queryPrint.exec())
+    {
+        while (queryPrint.next())
+        {
+            return queryPrint.value(0).toInt();
+        }
+    }
+    else
+    {
+        qDebug() << queryPrint.lastError();
+    }
+    return 0;
+}
+
 
 bool DbManager::trainExists(const QString& code) const
 {
