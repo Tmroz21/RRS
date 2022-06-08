@@ -29,6 +29,10 @@ private slots:
 
     void on_actionUsu_triggered();
 
+    void on_pushButton_clicked();
+
+    void on_tableWidget_Trains_cellClicked(int row, int column);
+
 private:
     Ui::MainWindow *ui;
 };
