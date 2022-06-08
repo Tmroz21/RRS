@@ -8,7 +8,7 @@
 #include <QVBoxLayout>
 
  QVBoxLayout * lay = new QVBoxLayout();
- static const QString path = "trains.db";
+ static const QString path = "database.db";
  DbManager db(path);
 
 MainWindow::MainWindow(QWidget *parent)
@@ -16,18 +16,28 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    //qDebug() << db.countAllTrains();
-    qDebug() << db.printToTable();
-    //db.printAllTrains();
+    for(int i=1;i<=db.countAllTrains();i++){
+        AddTrainToScroll(i);
+    }
 
 }
 
-void MainWindow::AddTrainToScroll()
+void MainWindow::AddTrainToScroll(int id)
 {
 
-   // QPushButton *button = new QPushButton(db.printToTable());
-    //lay->addWidget(button);
+   // QPushButton *button = new QPushButton(db.printToTableByID(id));
+  //  QObject::connect(button, &QPushButton::clicked,this,&MainWindow::on_button_clicked);
+   // lay->addWidget(button);
     //ui->scrollContent->setLayout(lay);
+            ui->tableWidget_Trains->insertRow(ui->tableWidget_Trains->rowCount());
+            QTableWidgetItem *newTrainCode  = new QTableWidgetItem(db.printCodeToTableByID(id));
+            QTableWidgetItem *newTrainFrom = new QTableWidgetItem(db.printFromToTableByID(id));
+            QTableWidgetItem *newTrainTo = new QTableWidgetItem(db.printToToTableByID(id));
+           // QTableWidgetItem *newTrainAVS = new QTableWidgetItem(QString::number(seats));
+            ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,0,newTrainCode);
+            ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,1,newTrainTo);
+            ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,2,newTrainFrom);
+            //ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,3,newTrainAVS);
 
 }
 
@@ -53,4 +63,5 @@ void MainWindow::on_actionUsu_triggered()
 {
     db.removeAllTrain();
 }
+
 

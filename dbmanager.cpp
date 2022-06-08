@@ -123,15 +123,59 @@ void DbManager::printAllTrains() const
     }
 }
 
-QString DbManager::printToTable()
+QString DbManager::printCodeToTableByID(int id)
 {
-    QSqlQuery queryPrint("SELECT * FROM trains");
-    QSqlRecord pr = queryPrint.record();
-    qDebug() << "numb of col" << pr.count();
-    int nameCol = pr.indexOf("code");
-    while(queryPrint.next())
+    QSqlQuery queryPrint;
+    queryPrint.prepare("SELECT code FROM trains WHERE id = (:id)");
+    queryPrint.bindValue(":id",id);
+    if(queryPrint.exec())
     {
-         queryPrint.value(nameCol).toString();
+        while (queryPrint.next())
+        {
+            return queryPrint.value(0).toString();
+        }
+    }
+    else
+    {
+        qDebug() << queryPrint.lastError();
+    }
+    return 0;
+}
+
+QString DbManager::printFromToTableByID(int id)
+{
+    QSqlQuery queryPrint;
+    queryPrint.prepare("SELECT from_ FROM trains WHERE id = (:id)");
+    queryPrint.bindValue(":id",id);
+    if(queryPrint.exec())
+    {
+        while (queryPrint.next())
+        {
+            return queryPrint.value(0).toString();
+        }
+    }
+    else
+    {
+        qDebug() << queryPrint.lastError();
+    }
+    return 0;
+}
+
+QString DbManager::printToToTableByID(int id)
+{
+    QSqlQuery queryPrint;
+    queryPrint.prepare("SELECT to_ FROM trains WHERE id = (:id)");
+    queryPrint.bindValue(":id",id);
+    if(queryPrint.exec())
+    {
+        while (queryPrint.next())
+        {
+            return queryPrint.value(0).toString();
+        }
+    }
+    else
+    {
+        qDebug() << queryPrint.lastError();
     }
     return 0;
 }

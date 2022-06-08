@@ -23,7 +23,11 @@ public:
 
     void printAllTrains() const;
 
-    QString printToTable();
+    QString printCodeToTableByID(int id);
+
+    QString printFromToTableByID(int id);
+
+    QString printToToTableByID(int id);
 
     bool removeAllTrain();
 
