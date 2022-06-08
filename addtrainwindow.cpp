@@ -10,13 +10,13 @@
 #include <mainwindow.h>
 
 
- QString code;
- QString from;
- QString to;
- int seats;
- QVector<Train> trainList;
- QVector<Train> trainRead;
- static const QString path = "database.db";
+QString code;
+QString from;
+QString to;
+int seats;
+QVector<Train> trainList;
+QVector<Train> trainRead;
+static const QString path = "database.db";
 
 
 AddTrainWindow::AddTrainWindow(QWidget *parent) :
@@ -68,31 +68,20 @@ void AddTrainWindow::on_pushButton_Add_clicked()
             info = "Train successfully added";
             db.createTable();
             db.addTrain(code,from,to,seats);
-            //db.printAllTrains();
+            MainWindow window;
         }
         else
         {
             qDebug() << "Database is not open!";
             info = "App can not connect to database.";
         }
-//        MainWindow window;
-//        window.AddTrainToScroll(code,from,to);
-//        qDebug("Items in list: %lld", trainList.size());
-//        ui->tableWidget_Trains->insertRow(ui->tableWidget_Trains->rowCount());
-//        QTableWidgetItem *newTrainCode = new QTableWidgetItem(code);
-//        QTableWidgetItem *newTrainFrom = new QTableWidgetItem(from);
-//        QTableWidgetItem *newTrainTo = new QTableWidgetItem(to);
-//        QTableWidgetItem *newTrainAVS = new QTableWidgetItem(QString::number(seats));
-//        ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,0,newTrainCode);
-//        ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,1,newTrainTo);
-//        ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,2,newTrainFrom);
-//        ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,3,newTrainAVS);
-        }
-        else
-        {
-            info = "Train with this code already exist.";
-        }
-        msgBox.setText(info);
-        msgBox.exec();
+
+    }
+    else
+    {
+        info = "Train with this code already exist.";
+    }
+    msgBox.setText(info);
+    msgBox.exec();
 }
 

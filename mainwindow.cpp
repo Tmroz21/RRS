@@ -38,6 +38,10 @@ void MainWindow::AddTrainToScroll(int id)
             ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,1,newTrainTo);
             ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,2,newTrainFrom);
             ui->tableWidget_Trains->setItem(ui->tableWidget_Trains->rowCount()-1,3,newTrainAVS);
+            ui->tableWidget_Trains->setColumnWidth(0, 20);
+            ui->tableWidget_Trains->setColumnWidth(1, 65);
+            ui->tableWidget_Trains->setColumnWidth(2, 65);
+            ui->tableWidget_Trains->setColumnWidth(3, 48);
 
 }
 
