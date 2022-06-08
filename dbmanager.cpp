@@ -200,6 +200,25 @@ int DbManager::printSeatsToTableByID(int id)
     return 0;
 }
 
+int DbManager::printIDByCode(QString code)
+{
+    QSqlQuery queryPrint;
+    queryPrint.prepare("SELECT id FROM trains WHERE code = (:code)");
+    queryPrint.bindValue(":code",code);
+    if(queryPrint.exec())
+    {
+        while (queryPrint.next())
+        {
+            return queryPrint.value(0).toInt();
+        }
+    }
+    else
+    {
+        qDebug() << queryPrint.lastError();
+    }
+    return 0;
+}
+
 
 bool DbManager::trainExists(const QString& code) const
 {
@@ -251,4 +270,20 @@ int DbManager::countAllTrains()
         return query.value(0).toInt();
     }
     return 0;
+}
+
+void DbManager::updateSeatsNumber(int id,int seats)
+{
+    QSqlQuery query;
+    query.prepare("UPDATE trains SET seats = :seats WHERE id = (:id)");
+    query.bindValue(":id",id);
+    query.bindValue(":seats",seats);
+    if (query.exec())
+    {
+        qDebug() << "updated";
+    }
+    else
+    {
+        qDebug() << "remove all trains failed: " << query.lastError();
+    }
 }

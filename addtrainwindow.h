@@ -28,8 +28,6 @@ private slots:
 
     void on_pushButton_Add_clicked();
 
-    void ReadFromFile();
-
 private:
     Ui::AddTrainWindow *ui;
 };

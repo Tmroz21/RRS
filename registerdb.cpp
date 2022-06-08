@@ -46,16 +46,16 @@ bool RegisterDb::createTable()
 
         return success;
     }
-bool RegisterDb::userAdd(const QString& UserName, const QString& Password)
+bool RegisterDb::userAdd(const QString& username, const QString& password)
     {
         bool success = false;
 
-        if (!UserName.isEmpty())
+        if (!username.isEmpty())
         {
             QSqlQuery queryAdd;
             queryAdd.prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
-            queryAdd.bindValue(":username", UserName);
-            queryAdd.bindValue(":password", Password);
+            queryAdd.bindValue(":username", username);
+            queryAdd.bindValue(":password", password);
 
             if(queryAdd.exec())
             {

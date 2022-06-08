@@ -2,6 +2,7 @@
 #include "ui_loginwindow.h"
 #include <QMessageBox>
 #include "registerdb.h"
+#include "user.cpp"
 
 static const QString path = "database.db";
 RegisterDb rdb(path);
@@ -25,6 +26,7 @@ void LoginWindow::on_pushButton_login_clicked()
     if(rdb.userPassword(username) == password) {
         QMessageBox::information(this, "Login", "Welcome!");
         m.show();
+        setStringUserid(username);
         this->hide();
     }
     else {

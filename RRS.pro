@@ -16,21 +16,26 @@ SOURCES += \
     loginwindow.cpp \
     main.cpp \
     mainwindow.cpp \
+    mytickets.cpp \
     registerdb.cpp \
-    train.cpp
+    user.cpp \
+    userdb.cpp
 
 HEADERS += \
     addtrainwindow.h \
     dbmanager.h \
     loginwindow.h \
     mainwindow.h \
+    mytickets.h \
     registerdb.h \
-    train.h
+    user.h \
+    userdb.h
 
 FORMS += \
     addtrainwindow.ui \
     loginwindow.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    mytickets.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
