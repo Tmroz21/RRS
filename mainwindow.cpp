@@ -24,11 +24,6 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::AddTrainToScroll(int id)
 {
-
-   // QPushButton *button = new QPushButton(db.printToTableByID(id));
-  //  QObject::connect(button, &QPushButton::clicked,this,&MainWindow::on_button_clicked);
-   // lay->addWidget(button);
-    //ui->scrollContent->setLayout(lay);
             ui->tableWidget_Trains->insertRow(ui->tableWidget_Trains->rowCount());
             QTableWidgetItem *newTrainCode  = new QTableWidgetItem(db.printCodeToTableByID(id));
             QTableWidgetItem *newTrainFrom = new QTableWidgetItem(db.printFromToTableByID(id));
