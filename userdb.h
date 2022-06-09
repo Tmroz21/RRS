@@ -19,7 +19,7 @@ public:
 
     bool userExists(const QString& username) const;
 
-    int countUsersRecords(QString username);
+    void countUsersRecords(QString username);
 private:
     QSqlDatabase r_db;
 };

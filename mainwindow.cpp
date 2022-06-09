@@ -3,7 +3,7 @@
 #include "dbmanager.h"
 #include "mytickets.h"
 #include "ui_mainwindow.h"
-#include "User.h"
+#include "user.h"
 #include "userdb.h"
 
 #include <QMessageBox>
@@ -98,9 +98,8 @@ void MainWindow::on_pushButton_reservation_clicked()
     if(numberOfSeats<avalibleSeats)
     {
         db.updateSeatsNumber(trainID,avalibleSeats-numberOfSeats);
-
         udb.userAdd(getUserID(),ui->label_line->text(),numberOfSeats);
-        qDebug()<< getUserID()<< ui->label_line->text()<<numberOfSeats<<QString::number(udb.countUsersRecords(getUserID()));
+        qDebug()<< getUserID()<< ui->label_line->text()<<numberOfSeats;
         updateTable();
 
 
@@ -122,7 +121,6 @@ void MainWindow::updateTable()
 
 void MainWindow::on_actionMoje_Bilety_triggered()
 {
-    MyTickets m;
-    m.show();
+    myTickets->show();
 }
 
