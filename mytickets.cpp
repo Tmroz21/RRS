@@ -21,7 +21,7 @@ MyTickets::~MyTickets()
 }
 
 void MyTickets::drawScrollSArea( QVBoxLayout * lay){
-    ui->scrollAreaWidgetContents->layout()->removeItem(lay);
+   // ui->scrollAreaWidgetContents->layout()->removeItem(lay);
     udb.countUsersRecords(getUserID());
     std::vector<QString> ticks = returnMyTicketsV();
     for(int i=0;i < ticks.size();i++)
