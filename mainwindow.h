@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "addtrainwindow.h"
+#include "mytickets.h"
 #include "qpushbutton.h"
 #include "qtablewidget.h"
 #include <QMainWindow>
@@ -18,6 +19,8 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
       AddTrainWindow *addTrainW = new AddTrainWindow();
+
+     MyTickets *myTickets = new MyTickets();
 
 public:
     MainWindow(QWidget *parent = nullptr);

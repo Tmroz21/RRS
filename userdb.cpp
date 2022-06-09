@@ -1,8 +1,10 @@
 #include "userdb.h"
+#include "user.h"
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QSqlRecord>
 #include <QDebug>
+#include <vector>
 
 userdb::userdb(const QString& path)
 {
@@ -71,15 +73,24 @@ bool userdb::userAdd(const QString& username, const QString& code, int tickets)
     return success;
 }
 
-int userdb::countUsersRecords(QString username){
+void userdb::countUsersRecords(QString username){
 
-    QSqlQuery query("SELECT COUNT(*) as cntt FROM userticket WHERE username = (:username)");
+    QSqlQuery query;
+    query.prepare("SELECT code, tickets FROM userticket WHERE username = (:username)");
     query.bindValue(":username",username);
     qDebug() << "count error: " << query.lastError();
-    if (query.next())
+    if(query.exec())
     {
-        return query.value(0).toInt();
+        clearMyTicketsV();
+        while (query.next())
+        {
+            QString info = " Linia: " + query.value(0).toString()+ " Bilety: " + query.value(1).toString();
+            pushToMyTicketsV(info);
+        }
     }
-    return 0;
+    else
+    {
+        qDebug() << query.lastError();
+    }
 }
 
