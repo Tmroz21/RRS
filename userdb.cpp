@@ -73,7 +73,7 @@ bool userdb::userAdd(const QString& username, const QString& code, int tickets)
     return success;
 }
 
-void userdb::countUsersRecords(QString username){
+void userdb::UsersRecords(QString username){
 
     QSqlQuery query;
     query.prepare("SELECT code, tickets FROM userticket WHERE username = (:username)");

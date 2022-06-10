@@ -15,11 +15,11 @@ public:
 
     bool createTable();
 
-    bool addTrain(const QString& name, const QString& code, const QString &to, int seats);
+    bool addTrain(const QString& code, const QString& from, const QString &to, int seats);
 
-    bool removeTrain(const QString& name);
+    bool removeTrain(const QString& code);
 
-    bool trainExists(const QString& name) const;
+    bool trainExists(const QString& code) const;
 
     void printAllTrains() const;
 

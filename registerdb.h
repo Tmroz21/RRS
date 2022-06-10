@@ -20,8 +20,6 @@ public:
 
     QString userPassword(QString username);
 
-
-
 private:
     QSqlDatabase r_db;
 };

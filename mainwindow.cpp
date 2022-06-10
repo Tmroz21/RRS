@@ -101,8 +101,6 @@ void MainWindow::on_pushButton_reservation_clicked()
         udb.userAdd(getUserID(),ui->label_line->text(),numberOfSeats);
         qDebug()<< getUserID()<< ui->label_line->text()<<numberOfSeats;
         updateTable();
-
-
     }
 }
 
