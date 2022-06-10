@@ -20,14 +20,14 @@ MyTickets::~MyTickets()
     delete ui;
 }
 
-void MyTickets::drawScrollSArea( QVBoxLayout * lay){
-   // ui->scrollAreaWidgetContents->layout()->removeItem(lay);
-    udb.countUsersRecords(getUserID());
+void MyTickets::drawScrollSArea( QVBoxLayout * lay)
+{
+    udb.UsersRecords(getUserID());
     std::vector<QString> ticks = returnMyTicketsV();
     for(int i=0;i < ticks.size();i++)
     {
         QPushButton *button = new QPushButton(ticks[i]);
-        qDebug() << ticks[i];
+        //qDebug() << ticks[i];
         lay->addWidget(button);
     }
     ui->scrollAreaWidgetContents->setLayout(lay);

@@ -15,8 +15,6 @@ public:
     explicit AddTrainWindow(QWidget *parent = nullptr);
     ~AddTrainWindow();
 
-    int input();
-
 private slots:
     void on_lineEdit_From_textChanged(const QString &arg1);
 

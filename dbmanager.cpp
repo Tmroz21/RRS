@@ -115,12 +115,12 @@ void DbManager::printAllTrains() const
     while (query.next())
     {
         QString code = query.value(idCode).toString();
-        qDebug() << QString::number(idCode)+" code ID";
+        //qDebug() << QString::number(idCode)+" code ID";
         QString from = query.value(idFrom).toString();
-        qDebug() << QString::number(idCode)+" from ID";
+        //qDebug() << QString::number(idCode)+" from ID";
         QString to = query.value(idTo).toString();
-        qDebug() << QString::number(idCode)+" to ID";
-        qDebug() << "===" << code << "==="<< from <<"==="<<to;
+        //qDebug() << QString::number(idCode)+" to ID";
+        //qDebug() << "===" << code << "==="<< from <<"==="<<to;
     }
 }
 

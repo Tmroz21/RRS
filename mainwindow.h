@@ -28,6 +28,8 @@ public:
 
     void AddTrainToScroll(int id);
 
+    void updateTable();
+
 private slots:
 
     void on_actionDodaj_poloczenie_triggered();
@@ -41,8 +43,6 @@ private slots:
     void on_tableWidget_Trains_cellClicked(int row, int column);
 
     void on_pushButton_reservation_clicked();
-
-    void updateTable();
 
     void on_actionMoje_Bilety_triggered();
 

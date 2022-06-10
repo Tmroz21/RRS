@@ -14,8 +14,6 @@ QString code;
 QString from;
 QString to;
 int seats;
-QVector<Train> trainList;
-QVector<Train> trainRead;
 static const QString path = "database.db";
 
 
